@@ -1,0 +1,6 @@
+// var is a older version to declare variable that can be modified further
+var x=10
+//let is a newer version of var and recommended method to declare a variable
+let y=10
+//const cannot be redeclare update in further
+const a=10
