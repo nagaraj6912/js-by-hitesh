@@ -1,93 +1,49 @@
-let randomNumber = parseInt(Math.random() * 100 + 1);
+// const x = document.querySelector("h1")
+// x.addEventListener("click", function (e) {
+//     console.log(d.type)
+// })
+// type:The type property sets or returns the value of the type attribute of an <object> element.
+// timeStamp:it returns the number of milliseconds from document was finished loading until the event created
+// preventDefault():Prevent a link from opening the URL, and check if preventDefault() was called
+// stopPropgation() : it prevents an event from bubling
+// target: The target attribute specifies where to open the linked document:
+// toElement target element where event occured
+// screenX co-ordinates of a mouse pointer in x axis
+// screenY co-ordinates of a mouse pointer in y axis
+// altkey Was the ALT key pressed when the event occurred?
+// cltrkey Was the cltr key pressed when the event occurred?
+// shiftkey Was the shift key pressed when the event occurred?
 
-const submit = document.querySelector('#subt');
-const userInput = document.querySelector('#guessField');
-const guessSlot = document.querySelector('.guesses');
-const remaining = document.querySelector('.lastResult');
-const lowOrHi = document.querySelector('.lowOrHi');
-const startOver = document.querySelector('.resultParas');
+// event bubbling :- when event is called it comes from last component to first
+// by default it was false
+// document.querySelector(".one").addEventListener("click",function(){
+//     alert("component 1 is clicked")
+// });
+// document.querySelector(".two").addEventListener("click",function(){
+//     alert("component 2 is clicked")
+// });
+// document.querySelector(".three").addEventListener("click",function(e){
+//     // e.stopPropagation(); it stops event from bubling
+//     alert("component 3 is clicked")
+// })
 
-const p = document.createElement('p');
 
-let prevGuess = [];
-let numGuess = 1;
+// capturing : It is the opposite of bubbling. The event handler is first on its parent component and then on the component where it was actually wanted to fire that event handler. 
+// document.querySelector(".one").addEventListener("click",function(){
+//     alert("component 1 is clicked")
+// },true);
+// document.querySelector(".two").addEventListener("click",function(){
+//     alert("component 2 is clicked")
+// },true);
+// document.querySelector(".three").addEventListener("click",function(e){
+//     alert("component 3 is clicked")
+// },true)
 
-let playGame = true;
 
-if (playGame) {
-    submit.addEventListener('click', function (e) {
-        e.preventDefault();
-        const guess = parseInt(userInput.value);
-        console.log(guess);
-        validateGuess(guess);
-    });
-}
-
-function validateGuess(guess) {
-    if (isNaN(guess)) {
-        alert('PLease enter a valid number');
-    } else if (guess < 1) {
-        alert('PLease enter a number more than 1');
-    } else if (guess > 100) {
-        alert('PLease enter a  number less than 100');
-    } else {
-        prevGuess.push(guess);
-        if (numGuess === 11) {
-            displayGuess(guess);
-            displayMessage(`Game Over. Random number was ${randomNumber}`);
-            endGame();
-        } else {
-            displayGuess(guess);
-            checkGuess(guess);
-        }
+// mini proj
+document.querySelector(".one").addEventListener("click",function(e){
+    let x=e.target.tagName
+    if(x == "H1"){
+        e.target.parentNode.remove()
     }
-}
-
-function checkGuess(guess) {
-    if (guess === randomNumber) {
-        displayMessage(`You guessed it right`);
-        endGame();
-    } else if (guess < randomNumber) {
-        displayMessage(`Number is TOOO low`);
-    } else if (guess > randomNumber) {
-        displayMessage(`Number is TOOO High`);
-    }
-}
-
-function displayGuess(guess) {
-    userInput.value = '';
-    guessSlot.innerHTML += `${guess}, `;
-    numGuess++;
-    remaining.innerHTML = `${11 - numGuess} `;
-}
-
-function displayMessage(message) {
-    lowOrHi.innerHTML = `<h2>${message}</h2>`;
-}
-
-function endGame() {
-    userInput.value = '';
-    userInput.setAttribute('disabled', '');
-    p.classList.add('button');
-    p.innerHTML = `<h2 id="newGame">Start new Game</h2>`;
-    startOver.appendChild(p);
-    playGame = false;
-    
-    newGame();
-}
-
-function newGame() {
-    const newGameButton = document.querySelector('#newGame');
-    newGameButton.style.cursor="pointer"
-    newGameButton.addEventListener('click', function (e) {
-        randomNumber = parseInt(Math.random() * 100 + 1);
-        prevGuess = [];
-        numGuess = 1;
-        guessSlot.innerHTML = '';
-        remaining.innerHTML = `${11 - numGuess} `;
-        userInput.removeAttribute('disabled');
-        startOver.removeChild(p);
-
-        playGame = true;
-    });
-}
+})
