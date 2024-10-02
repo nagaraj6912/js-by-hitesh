@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
     <title>Event KeyCodes</title>
     <link rel="stylesheet" type="text/css" href="../styles.css" />
     <style>
@@ -13,15 +12,21 @@
         border: 1px solid #e7e7e7;
       }
       .project {
+        
         background-color: #1c1c1c;
         color: #ffffff;
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
         text-align: center;
         height: 100vh;
       }
-
+      button{
+        padding: 5px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
       .color {
         color: aliceblue;
         display: flex;
@@ -37,8 +42,11 @@
       >
     </nav>
     <div class="project">
+      <h1>click below and open console</h1>
+      <h2>timer : <span id="time"></span></h2>
       <div id="insert">
-        <div class="key">Press the key and watch magic</div>
+        <button class="start" onclick="star()">Start</button>
+        <button class="stop" onclick="sto()">Stop</button>
       </div>
     </div>
 
