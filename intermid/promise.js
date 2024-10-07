@@ -1,3 +1,4 @@
+//promise is an object representing the eventual completion and failure if an asynchronous operation
 const promiseOne = new Promise(function (resolve, reject) {
     //Do an async task
     // DB calls, cryptography, network
@@ -59,7 +60,7 @@ promiseFour
     }).finally(() => console.log("The promise is either resolved or rejected"))
 
 
-
+// chaining of promises
 const promiseFive = new Promise(function (resolve, reject) {
     setTimeout(function () {
         let error = true
