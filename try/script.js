@@ -1,24 +1,21 @@
 
-const promiseFive = new Promise(function (resolve, reject) {
-    setTimeout(function () {
-        let error = true
-        if (!error) {
-            resolve({
-                username: "javascript",
-                password: "123"
-            })
-        } else {
-            reject('ERROR: JS went wrong')
-        }
-    }, 1000)
-});
 
-async function consumePromiseFive() {
-    try {
-        const response = await promiseFive
-        console.log(response);
-    } catch (error) {
-        console.log(error);
-    }
+// document.querySelector("body").style.backgroundImage=
+
+function fun(image){
+    let img=document.querySelector("body").style.backgroundImage=`url(${image})`
 }
-consumePromiseFive()
+async function random(e) {
+    try{
+        let x=await fetch("https://dog.ceo/api/breeds/image/random")
+        let random=await x.json()
+        let image=random.message
+        console.log(image)
+        fun(image)
+    }
+    catch{
+        console.log("error",Error)
+    }    
+}
+
+random()
